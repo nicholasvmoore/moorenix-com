@@ -1,0 +1,33 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+        nodejs: 10
+    commands:
+      - npm install -g hexo-cli hexo-generator-json-content
+      - npm install
+      - apt-get update
+      - apt-get install -y awscli
+      - cd $CODEBUILD_SRC_DIR 
+      - aws ssm get-parameter --name moorenix-com-cicd --with-decryption --region us-east-1 --query Parameter.Value --output text > /root/.ssh/id_rsa 
+      - chmod 600 /root/.ssh/id_rsa 
+      - echo "Host *\n IdentityFile /root/.ssh/id_rsa\n StrictHostKeyChecking no" > /root/.ssh/config 
+      - cat /root/.ssh/config 
+      - chmod 600 /root/.ssh/config 
+      - git init
+      - git remote add origin git@github.com:nicholasvmoore/moorenix-com.git
+      - git fetch 
+      - git reset --hard origin/master 
+      - git submodule init 
+      - git submodule update --init --recursive 
+      - npm install -g hexo-cli 
+      - npm install 
+
+  build:
+    commands:
+      - hexo generate
+
+  post_build:
+    commands:
+      - cd public/ && aws s3 sync . s3://www.moorenix.com/ --delete --size-only 
