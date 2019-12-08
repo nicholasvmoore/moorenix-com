@@ -1,0 +1,4 @@
+[submodule "themes/hexo-theme-hipaper"]
+	path = themes/hexo-theme-hipaper
+	url = https://github.com/nicholasvmoore/hexo-theme-hipaper.git
+	branch = master
