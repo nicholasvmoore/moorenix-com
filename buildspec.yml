@@ -7,8 +7,6 @@ phases:
     commands:
       - npm install -g hexo-cli hexo-generator-json-content
       - npm install
-      - apt-get update
-      - apt-get install -y awscli
       - cd $CODEBUILD_SRC_DIR 
       - aws ssm get-parameter --name moorenix-com-cicd --with-decryption --region us-east-1 --query Parameter.Value --output text > /root/.ssh/id_rsa 
       - chmod 600 /root/.ssh/id_rsa 
@@ -20,9 +18,7 @@ phases:
       - git fetch 
       - git reset --hard origin/master 
       - git submodule init 
-      - git submodule update --init --recursive 
-      - npm install -g hexo-cli hexo-generator-json-content
-      - npm install 
+      - git submodule update --init --recursive
 
   build:
     commands:
