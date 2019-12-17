@@ -15,7 +15,7 @@ I'm sure many of you have stumbled across the article [Ansible and HashiCorp: Be
   * Using a tool to create a dynamic ansible inventory from the `.tfstate`
   * Create an Ansible inventory from Terraform
 
-I tried several of these methods and the one which worked best for me was to have terraform generate an Ansible inventory. This solution was simple yet functional for our organization. We have no need to maintain the `.tfstate` long-term as we're only needing terraform to stand up several long-running VMs which will be maintained & patched. This may seem like the old-school method of infrastructure as code, because it is, but it works and works well.
+I tried several of these methods and the one which worked best for me was to have terraform generate an Ansible inventory. This solution was simple yet functional for our organization. We have no need to maintain the `.tfstate` long-term as we're only needing terraform to stand up several long-running VMs which will be maintained & patched. This may seem like the old-school method of infrastructure as code, because it is, but it works and works well. I've created a [Github repo](https://github.com/nicholasvmoore/terraform-ansible-inventory) as an example.
 
 # Terraform templatefile()
 The key to getting Terraform to generate a file from the `.tfstate` is the `templatefile()` function. Several attempts at getting this to work included using a `null_resource` with a local-exec but that failed to loop properly when generating the inventory from my template and that's where `templatefile()` came in handy.
@@ -50,4 +50,5 @@ all:
 ```
 
 # References
+[Github Code Repo](https://github.com/nicholasvmoore/terraform-ansible-inventory)
 [Terraform Templates](https://www.terraform.io/docs/configuration/expressions.html#string-templates)
