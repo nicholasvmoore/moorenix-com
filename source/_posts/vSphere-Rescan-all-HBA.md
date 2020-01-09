@@ -1,9 +1,9 @@
 ---
 title: vSphere Rescan all HBA
 tags:
-	- vmware
-	- powershell
-	- powercli
+	- VMware
+	- PowerShell
+	- PowerCLI
 	- snippets
 date: 2019-12-08 11:53:06
 ---
