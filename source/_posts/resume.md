@@ -22,7 +22,7 @@ Enter [JSON Resume](https://jsonresume.org/), I knew I couldn't have been the on
   - [__AWS:CloudFront__](https://aws.amazon.com/cloudfront/)
   - [__AWS:CertificateManager__](https://aws.amazon.com/certificate-manager/)
 - Additional Exposure of resume through a public [Githib](https://github.com/nicholasvmoore/resume-moorenix-com) repository
-- A usecase for my [nmoore.me](http://www.nmoore.me) domain
+- A usecase for my [resume.moorenix.com](http://resume.moorenix.com) domain
 - SSL Encrypted
 - The website has to be static & cheap
 
