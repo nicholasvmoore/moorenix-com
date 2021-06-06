@@ -1,0 +1,5 @@
+steps:
+- name: node:12 # Use nodejs:12 for the time being github issue #149 https://github.com/zalando-incubator/hexo-theme-doc/issues/149
+  args: ['./build.sh']
+- name: 'gcr.io/cloud-builders/gsutil'
+  args: ['-m', 'cp', '-r', '/workspace/public/*', 'gs://nmoore.me/']
